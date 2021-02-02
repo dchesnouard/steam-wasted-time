@@ -1,0 +1,26 @@
+language: python
+
+python:
+  - "3.9"
+
+services:
+  - mysql
+
+env:
+  global:
+    - DJANGO_SETTINGS_MODULE="steamwastedtime.settings"
+    - PYTHONPATH="/home/travis/build/dchesnouard/steamwastedtime"
+    - PIP_USE_MIRRORS=true
+    - BUILD_ON_TRAVIS=true
+  matrix:
+    - DJANGO=3.1 DB=mysql
+
+install:
+  - pip install -r requirements.txt
+
+before_script:
+  - mysql -e 'create database travis_ci_db;'
+  - python manage.py syncdb --noinput
+
+script:
+  - python manage.py test
