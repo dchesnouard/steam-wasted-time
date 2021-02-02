@@ -119,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr-FR'
 
-TIME_ZONE = 'Paris/Europe'
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
